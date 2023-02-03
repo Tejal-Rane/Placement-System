@@ -8,6 +8,7 @@ require('dotenv').config
 app.use(express.json({limit: '50mb'}))
 app.use(cors())
 const placementRoute=require('./routes/placementRoute')
+const contactRoute=require('./routes/contactRoute')
 
 const url = `mongodb+srv://TejalR:Tejal2806@cluster0.s9wpjms.mongodb.net/PlacementSystem?retryWrites=true&w=majority`;
 
@@ -19,6 +20,7 @@ const connectionParams={
 
 app.use('/',profileRoute)
 app.use('/placement/',placementRoute)
+app.use('/contact/',contactRoute)
 app.use(express.static(path.join(__dirname, "./client/build"))); 
 app.get("*", (req, res) => { res.sendFile(path.join(__dirname, "./client/build/index.html"));});
 const port=8080;
